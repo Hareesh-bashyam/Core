@@ -1,0 +1,15 @@
+asgiref==3.10.0
+dj-database-url==3.0.1
+Django==5.2.8
+django-redis==6.0.0
+djangorestframework==3.16.1
+djangorestframework_simplejwt==5.5.1
+dotenv==0.9.9
+psycopg==3.2.12
+psycopg-binary==3.2.12
+psycopg2-binary==2.9.11
+PyJWT==2.10.1
+python-dotenv==1.2.1
+redis==7.0.1
+sqlparse==0.5.3
+tzdata==2025.2
