@@ -1,38 +1,62 @@
-**Features**
+# Core (Django) — Setup & Run
 
-Django 5.2.4
+## Features
 
-Django REST Framework
+* Django 5.2.4
+* Django REST Framework
+* JWT Authentication (Access + Refresh Tokens)
+* PostgreSQL Database
+* .env support for secret keys and DB credentials
+* Token blacklisting enabled
+* Custom `accounts` app
 
-JWT Authentication (Access + Refresh Tokens)
+---
 
-PostgreSQL Database
+## Installation & Setup
 
-.env support for secret keys and DB credentials
+### 1. Clone the Repository
 
-Token blacklisting enabled
-
-Custom accounts app
-
-
-**Installation & Setup**
-
-
-1️ Clone the Repository
+```bash
 git clone <repo-url>
 cd core
+```
 
-2️ Create & Activate Virtual Environment
+### 2. Create & Activate Virtual Environment
+
+Windows (PowerShell):
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
+
+Windows (Command Prompt):
+
+```cmd
 python -m venv .venv
 .venv\Scripts\activate
+```
 
-3️ Install Dependencies
+Linux / WSL / macOS:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-Environment Variables
+---
 
-**Create a .env file in your project root:**
+## Environment Variables (.env)
 
+Create a `.env` file in the project root and add the following values:
+
+```env
 DJANGO_SECRET_KEY=your-secret-key
 DJANGO_DEBUG=True
 DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1
@@ -42,11 +66,17 @@ DB_USER=postgres
 DB_PASSWORD=yourpassword
 DB_HOST=localhost
 DB_PORT=5432
+```
 
-**PostgreSQL Database Configuration**
+> Make sure `.env` is listed in `.gitignore` to avoid leaking secrets.
 
-The project reads DB configuration from .env:
+---
 
+## PostgreSQL Database Configuration
+
+The project reads DB config from `.env`. Example `DATABASES` setting in `settings.py`:
+
+```python
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -57,20 +87,33 @@ DATABASES = {
         "PORT": os.getenv("DB_PORT", 5432),
     }
 }
+```
 
+---
 
-**Running the Project**
-Apply Migrations
+## Running the Project
+
+Apply migrations:
+
+```bash
 python manage.py migrate
+```
 
-Create a Superuser
+Create a superuser:
+
+```bash
 python manage.py createsuperuser
+```
 
-Start the Server
+Start the development server:
+
+```bash
 python manage.py runserver
+```
 
+The app will be available at:
 
-**App runs at:**
-
+```
 http://127.0.0.1:8000/
+```
 
